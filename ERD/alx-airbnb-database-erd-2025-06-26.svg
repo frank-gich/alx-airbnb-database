@@ -1,0 +1,215 @@
+<svg width="1400" height="900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1400" height="900" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">AirBnB Database - Entity Relationship Diagram</text>
+  
+  <!-- User Entity (Top Left) -->
+  <g transform="translate(50,80)">
+    <rect width="220" height="180" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="220" height="25" fill="#3498db" rx="5"/>
+    <text x="110" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">USER</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 user_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#000">first_name (VARCHAR, NOT NULL)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#000">last_name (VARCHAR, NOT NULL)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">📧 email (VARCHAR, UNIQUE, NOT NULL)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">password_hash (VARCHAR, NOT NULL)</text>
+    <text x="10" y="115" font-family="Arial, sans-serif" font-size="10" fill="#000">phone_number (VARCHAR, NULL)</text>
+    <text x="10" y="130" font-family="Arial, sans-serif" font-size="10" fill="#000">role (ENUM, NOT NULL)</text>
+    <text x="10" y="145" font-family="Arial, sans-serif" font-size="10" fill="#000">created_at (TIMESTAMP, DEFAULT)</text>
+  </g>
+  
+  <!-- Property Entity (Top Center) -->
+  <g transform="translate(350,80)">
+    <rect width="240" height="195" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="240" height="25" fill="#3498db" rx="5"/>
+    <text x="120" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PROPERTY</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 property_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 host_id (UUID, FK → User)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#000">name (VARCHAR, NOT NULL)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">description (TEXT, NOT NULL)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">location (VARCHAR, NOT NULL)</text>
+    <text x="10" y="115" font-family="Arial, sans-serif" font-size="10" fill="#000">price_per_night (DECIMAL, NOT NULL)</text>
+    <text x="10" y="130" font-family="Arial, sans-serif" font-size="10" fill="#000">created_at (TIMESTAMP, DEFAULT)</text>
+    <text x="10" y="145" font-family="Arial, sans-serif" font-size="10" fill="#000">updated_at (TIMESTAMP, ON UPDATE)</text>
+  </g>
+  
+  <!-- Message Entity (Top Right) -->
+  <g transform="translate(670,80)">
+    <rect width="220" height="145" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="220" height="25" fill="#3498db" rx="5"/>
+    <text x="110" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">MESSAGE</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 message_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 sender_id (UUID, FK → User)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 recipient_id (UUID, FK → User)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">message_body (TEXT, NOT NULL)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">sent_at (TIMESTAMP, DEFAULT)</text>
+  </g>
+  
+  <!-- Booking Entity (Middle Center) -->
+  <g transform="translate(350,350)">
+    <rect width="240" height="195" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="240" height="25" fill="#3498db" rx="5"/>
+    <text x="120" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">BOOKING</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 booking_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 property_id (UUID, FK → Property)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 user_id (UUID, FK → User)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">start_date (DATE, NOT NULL)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">end_date (DATE, NOT NULL)</text>
+    <text x="10" y="115" font-family="Arial, sans-serif" font-size="10" fill="#000">total_price (DECIMAL, NOT NULL)</text>
+    <text x="10" y="130" font-family="Arial, sans-serif" font-size="10" fill="#000">status (ENUM, NOT NULL)</text>
+    <text x="10" y="145" font-family="Arial, sans-serif" font-size="10" fill="#000">created_at (TIMESTAMP, DEFAULT)</text>
+  </g>
+  
+  <!-- Review Entity (Bottom Right) -->
+  <g transform="translate(670,350)">
+    <rect width="220" height="165" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="220" height="25" fill="#3498db" rx="5"/>
+    <text x="110" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">REVIEW</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 review_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 property_id (UUID, FK → Property)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 user_id (UUID, FK → User)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">⭐ rating (INTEGER, CHECK 1-5)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">comment (TEXT, NOT NULL)</text>
+    <text x="10" y="115" font-family="Arial, sans-serif" font-size="10" fill="#000">created_at (TIMESTAMP, DEFAULT)</text>
+  </g>
+  
+  <!-- Payment Entity (Bottom Center) -->
+  <g transform="translate(350,610)">
+    <rect width="240" height="145" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+    <rect width="240" height="25" fill="#3498db" rx="5"/>
+    <text x="120" y="18" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PAYMENT</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="10" fill="#000">🔑 payment_id (UUID, PK, Indexed)</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="10" fill="#17a2b8">🔗 booking_id (UUID, FK → Booking)</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="10" fill="#000">amount (DECIMAL, NOT NULL)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="10" fill="#000">payment_date (TIMESTAMP, DEFAULT)</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="10" fill="#000">payment_method (ENUM, NOT NULL)</text>
+  </g>
+  
+  <!-- Relationship Lines -->
+  
+  <!-- User to Property (hosts) -->
+  <line x1="270" y1="140" x2="350" y2="140" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="280" cy="140" r="6" fill="#e74c3c"/>
+  <text x="285" y="144" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="340" cy="140" r="6" fill="#e74c3c"/>
+  <text x="345" y="144" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="295" y="128" width="30" height="12" fill="white" stroke="#e74c3c"/>
+  <text x="310" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">hosts</text>
+  
+  <!-- User to Booking -->
+  <line x1="160" y1="260" x2="160" y2="310" stroke="#e74c3c" stroke-width="2"/>
+  <line x1="160" y1="310" x2="350" y2="310" stroke="#e74c3c" stroke-width="2"/>
+  <line x1="350" y1="310" x2="350" y2="350" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="160" cy="270" r="6" fill="#e74c3c"/>
+  <text x="165" y="274" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="350" cy="340" r="6" fill="#e74c3c"/>
+  <text x="355" y="344" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="240" y="298" width="30" height="12" fill="white" stroke="#e74c3c"/>
+  <text x="255" y="306" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">makes</text>
+  
+  <!-- Property to Booking -->
+  <line x1="470" y1="275" x2="470" y2="350" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="470" cy="285" r="6" fill="#e74c3c"/>
+  <text x="475" y="289" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="470" cy="340" r="6" fill="#e74c3c"/>
+  <text x="475" y="344" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="480" y="305" width="35" height="12" fill="white" stroke="#e74c3c"/>
+  <text x="497" y="313" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">booked</text>
+  
+  <!-- Booking to Payment -->
+  <line x1="470" y1="545" x2="470" y2="610" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="470" cy="555" r="6" fill="#e74c3c"/>
+  <text x="475" y="559" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="470" cy="600" r="6" fill="#e74c3c"/>
+  <text x="475" y="604" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <rect x="480" y="572" width="25" height="12" fill="white" stroke="#e74c3c"/>
+  <text x="492" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">pays</text>
+  
+  <!-- Property to Review -->
+  <line x1="590" y1="420" x2="670" y2="420" stroke="#e74c3c" stroke-width="2"/>
+  <circle cx="600" cy="420" r="6" fill="#e74c3c"/>
+  <text x="605" y="424" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="660" cy="420" r="6" fill="#e74c3c"/>
+  <text x="665" y="424" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="610" y="408" width="40" height="12" fill="white" stroke="#e74c3c"/>
+  <text x="630" y="416" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">reviews</text>
+  
+  <!-- User to Review -->
+  <line x1="160" y1="260" x2="160" y2="330" stroke="#27ae60" stroke-width="2"/>
+  <line x1="160" y1="330" x2="620" y2="330" stroke="#27ae60" stroke-width="2"/>
+  <line x1="620" y1="330" x2="620" y2="350" stroke="#27ae60" stroke-width="2"/>
+  <line x1="620" y1="350" x2="670" y2="350" stroke="#27ae60" stroke-width="2"/>
+  <circle cx="160" cy="270" r="6" fill="#27ae60"/>
+  <text x="165" y="274" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">1</text>
+  <circle cx="660" cy="350" r="6" fill="#27ae60"/>
+  <text x="665" y="354" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="380" y="318" width="30" height="12" fill="white" stroke="#27ae60"/>
+  <text x="395" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27ae60">writes</text>
+  
+  <!-- User to Message (self-referencing) -->
+  <line x1="270" y1="120" x2="670" y2="120" stroke="#9b59b6" stroke-width="2"/>
+  <circle cx="280" cy="120" r="6" fill="#9b59b6"/>
+  <text x="285" y="124" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <circle cx="660" cy="120" r="6" fill="#9b59b6"/>
+  <text x="665" y="124" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">N</text>
+  <rect x="450" y="108" width="40" height="12" fill="white" stroke="#9b59b6"/>
+  <text x="470" y="116" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#9b59b6">messages</text>
+  
+  <!-- Legend -->
+  <g transform="translate(950,80)">
+    <rect x="0" y="0" width="420" height="280" fill="white" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="10" y="20" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Database Specification</text>
+    
+    <rect x="10" y="35" width="20" height="15" fill="#fff3cd" stroke="#ffc107"/>
+    <text x="35" y="46" font-family="Arial, sans-serif" font-size="11" fill="#000">🔑 Primary Key (UUID, Indexed)</text>
+    
+    <rect x="10" y="55" width="20" height="15" fill="#d1ecf1" stroke="#17a2b8"/>
+    <text x="35" y="66" font-family="Arial, sans-serif" font-size="11" fill="#000">🔗 Foreign Key</text>
+    
+    <text x="35" y="85" font-family="Arial, sans-serif" font-size="11" fill="#000">📧 Unique constraint (email)</text>
+    <text x="35" y="100" font-family="Arial, sans-serif" font-size="11" fill="#000">⭐ Check constraint (rating 1-5)</text>
+    
+    <text x="10" y="120" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">ENUM Values:</text>
+    <text x="10" y="135" font-family="Arial, sans-serif" font-size="10" fill="#000">• role: guest, host, admin</text>
+    <text x="10" y="150" font-family="Arial, sans-serif" font-size="10" fill="#000">• status: pending, confirmed, canceled</text>
+    <text x="10" y="165" font-family="Arial, sans-serif" font-size="10" fill="#000">• payment_method: credit_card, paypal, stripe</text>
+    
+    <text x="10" y="185" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">Additional Indexes:</text>
+    <text x="10" y="200" font-family="Arial, sans-serif" font-size="10" fill="#000">• User.email</text>
+    <text x="10" y="215" font-family="Arial, sans-serif" font-size="10" fill="#000">• Property.property_id, Booking.property_id</text>
+    <text x="10" y="230" font-family="Arial, sans-serif" font-size="10" fill="#000">• Booking.booking_id, Payment.booking_id</text>
+    
+    <text x="10" y="250" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">Relationships:</text>
+    <line x1="10" y1="260" x2="50" y2="260" stroke="#e74c3c" stroke-width="2"/>
+    <text x="55" y="264" font-family="Arial, sans-serif" font-size="10" fill="#000">Standard FK relationships</text>
+    
+    <line x1="10" y1="275" x2="50" y2="275" stroke="#27ae60" stroke-width="2"/>
+    <text x="55" y="279" font-family="Arial, sans-serif" font-size="10" fill="#000">User writes reviews</text>
+  </g>
+  
+  <!-- Constraints Box -->
+  <g transform="translate(950,380)">
+    <rect x="0" y="0" width="420" height="160" fill="white" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="10" y="20" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Key Constraints</text>
+    
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ All primary keys are UUID and indexed</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ User.email has unique constraint</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ Review.rating has CHECK (1 ≤ rating ≤ 5)</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ Foreign key constraints enforce referential integrity</text>
+    <text x="10" y="100" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ NOT NULL constraints on required fields</text>
+    <text x="10" y="115" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ Timestamps with DEFAULT CURRENT_TIMESTAMP</text>
+    <text x="10" y="130" font-family="Arial, sans-serif" font-size="11" fill="#000">✓ Property.updated_at with ON UPDATE trigger</text>
+  </g>
+  
+  <!-- Cardinality -->
+  <g transform="translate(950,560)">
+    <rect x="0" y="0" width="420" height="100" fill="white" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="10" y="20" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">Cardinality</text>
+    <text x="10" y="40" font-family="Arial, sans-serif" font-size="11" fill="#000">1:N → User hosts Properties</text>
+    <text x="10" y="55" font-family="Arial, sans-serif" font-size="11" fill="#000">1:N → User makes Bookings, Property has Bookings</text>
+    <text x="10" y="70" font-family="Arial, sans-serif" font-size="11" fill="#000">1:1 → Booking has Payment</text>
+    <text x="10" y="85" font-family="Arial, sans-serif" font-size="11" fill="#000">N:N → Users send/receive Messages (self-referencing)</text>
+  </g>
+</svg>
