@@ -24,7 +24,9 @@ SELECT
 FROM 
     Booking b
 INNER JOIN 
-    User u ON b.user_id = u.user_id;
+    User u ON b.user_id = u.user_id
+ORDER BY 
+    b.start_date DESC;
 
 -- ================================================
 -- 2. LEFT JOIN: Properties and their Reviews
@@ -40,7 +42,9 @@ SELECT
 FROM 
     Property p
 LEFT JOIN 
-    Review r ON p.property_id = r.property_id;
+    Review r ON p.property_id = r.property_id
+ORDER BY 
+    p.property_id ASC, r.created_at DESC NULLS LAST;
 
 -- ================================================
 -- 3. FULL OUTER JOIN: All Users and All Bookings
@@ -61,7 +65,9 @@ SELECT
 FROM 
     User u
 FULL OUTER JOIN 
-    Booking b ON u.user_id = b.user_id;
+    Booking b ON u.user_id = b.user_id
+ORDER BY 
+    u.user_id ASC NULLS LAST, b.start_date ASC NULLS LAST;
 
 -- ================================================
 -- END OF FILE
